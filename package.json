@@ -1,0 +1,30 @@
+{
+  "name": "react-native-rave-webview",
+  "version": "1.0.0",
+  "description": "The package allows you accept payment using rave by flutterwave and guess what , it doesn't require any form of linking, just install and begin to use .",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/react-native-nigeria/react-native-rave-webview.git"
+  },
+  "keywords": [
+    "rave",
+    "flutterwave",
+    "payment",
+    "payment",
+    "gateway",
+    "react",
+    "native",
+    "webview"
+  ],
+  "author": "React Native Nigeria Community",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/react-native-nigeria/react-native-rave-webview/issues"
+  },
+  "homepage": "https://github.com/react-native-nigeria/react-native-rave-webview#readme",
+  "dependencies": {}
+}
