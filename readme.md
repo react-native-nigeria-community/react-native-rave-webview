@@ -186,7 +186,7 @@ You can pull in react-native-rave-webview into app with the steps below;
 
   
 
-## [](https://github.com/react-native-nigeria/react-native-rave-webview#contributions)Contributions
+## [](https://github.com/react-native-nigeria/react-native-rave-webview/blob/master/contribution.md)Contributions
 
   
 
