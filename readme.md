@@ -190,7 +190,7 @@ You can pull in react-native-rave-webview into app with the steps below;
 
   
 
-What to help make this package even more awesome? [Read how to contribute](https://github.com/just1and0/react-native-nigeria/react-native-rave-webview/blob/master/contribution.md)
+What to help make this package even more awesome? [Read how to contribute](https://github.com/react-native-nigeria/react-native-rave-webview/blob/master/contribution.md)
 
 
 
