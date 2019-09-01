@@ -90,13 +90,13 @@ You can pull in react-native-rave-webview into app with the steps below;
 
 -   Change directory into your current project directory from your terminal and enter this command:
     
-    > npm install react-native-rave-webview --save
+    `npm install react-native-rave-webview --save`
     
     ### [](https://github.com/react-native-nigeria/react-native-rave-webview#or)OR
     
-    > yarn add react-native-rave-webview
+    `yarn add react-native-rave-webview`
     
-    > and that's it, you're all good to go!
+    and that's it, you're all good to go!
 
   
   `Note:`  To use  `Yarn`  on your machine  [Click Here](https://yarnpkg.com/en/docs/install)
@@ -112,7 +112,7 @@ You can pull in react-native-rave-webview into app with the steps below;
  #### 2. Set your success, failure and close methods
 
  
-
+ ``` javascript
     constructor(props) {
         super(props);
 	        
@@ -132,32 +132,32 @@ You can pull in react-native-rave-webview into app with the steps below;
         //an error occoured 
     
       }
+  ```
 #### 3. Use component (ensure to set currency for the desired payment method to display)
 
- 
-
-     render() {
-         return (
-            <View  style={styles.container}>
-			    <Rave
-				    buttonText=  "Pay Now"
-				    raveKey="<your-api-key-here>"
-				    amount={20000}
-				    billingEmail="ayoshokz@gmail.com"
-				    billingMobile="08101274387"
-				    billingName="Oluwatobi Shokunbi"
-				    ActivityIndicatorColor="green"
-				    onCancel={()=>this.onCancel()}
-				    onSuccess={(transactionRef)=>this.onSuccess(transactionRef)}
-				    btnStyles={{backgroundColor:'green', width:100, alignContent:  'center' }}
-				    textStyles={{ color:'white', alignSelf:  'center', }}
-				    onError={()=>{alert('something went wrong')}}
-				    txref="1234"
-				  />
-		    </View>
-	    );
-	   }
-
+``` javascript
+render() {
+  return (
+     <View  style={styles.container}>
+   <Rave
+     buttonText=  "Pay Now"
+     raveKey="<your-api-key-here>"
+     amount={20000}
+     billingEmail="ayoshokz@gmail.com"
+     billingMobile="08101274387"
+     billingName="Oluwatobi Shokunbi"
+     ActivityIndicatorColor="green"
+     onCancel={()=>this.onCancel()}
+     onSuccess={(transactionRef)=>this.onSuccess(transactionRef)}
+     btnStyles={{backgroundColor:'green', width:100, alignContent:  'center' }}
+     textStyles={{ color:'white', alignSelf:  'center', }}
+     onError={()=>{alert('something went wrong')}}
+     txref="1234"
+   />
+ </View>
+);
+}
+```
   
   
 ## API's
