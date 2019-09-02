@@ -173,7 +173,7 @@ You can pull in react-native-rave-webview into app with the steps below;
 | `buttonText` | Defines text on the button | default: `Pay Now` |
 | `textStyles` | Defines styles for text in button | `nill` |
 | `btnStyles` | Defines style for button | `nill` |
-| `raveKey` | Public or Private paystack key(visit paystack.com to get yours) |`nill` |
+| `raveKey` | Public or Private paystack key(visit https://rave.flutterwave.com to get yours) |`nill` |
 | `amount` | Amount to be paid | `nill` |
 | `txref` | set TransactionRef of transaction | `nill` |
 | `ActivityIndicatorColor` | color of loader | default: `green` |
