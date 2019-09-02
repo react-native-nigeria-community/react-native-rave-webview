@@ -199,7 +199,7 @@ What to help make this package even more awesome? [Read how to contribute](https
   This project is licensed under MIT license.
 ## Related Projects
 - [React-Native-Paystack-WebView](https://github.com/just1and0/react-native-paystack-webview)
-
+- [React-Native-quidpay-WebView](https://github.com/react-native-nigeria/react-native-quidpay-webview)
 
 
   
