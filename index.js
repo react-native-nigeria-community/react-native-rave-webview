@@ -86,7 +86,7 @@ import {verifyPayment} from './api';
             </body>
     </html>`;
   
-    const messageRecived =async (data) => {
+    const messageRecived = async (data) => {
       var webResponse = JSON.parse(data);
       switch (webResponse.event) {
         case "cancelled":
@@ -111,7 +111,6 @@ import {verifyPayment} from './api';
             } catch (error) {console.log(error)}
         }
           break;
-  
         default:
           setModalVisible(false);
           props.onCancel({"error":"Transaction was cancelled"});

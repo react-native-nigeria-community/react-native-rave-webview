@@ -119,18 +119,25 @@ You can pull in react-native-rave-webview into app with the steps below;
     super(props)
   }
 
-  onSuccess (data) {
-    console.log('success', data)
-    // You can get the transaction reference from successful transaction charge response returned and handle your transaction verification here
-  }
-
-  onCancel () {
-    console.log('error', 'Transaction was Cancelled!')
-  }
-
-  onError () {
-    // an error occoured
-  }
+    async onSuccess(data){
+       console.log(JSON.stringify(data))
+    }
+    onCancel(data){
+        console.log(JSON.stringify(data))
+    }
+    onError(data){
+        console.log(JSON.stringify(data))
+    }
+    onVerifyingError(data){
+        console.log(JSON.stringify(data))
+    }
+    getReference = () => {
+        let text = "";
+        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.=";
+        for( let i=0; i < 10; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        return text;
+    };
   ```
 #### 3. Use component (ensure to set currency for the desired payment method to display)
 
@@ -138,27 +145,21 @@ You can pull in react-native-rave-webview into app with the steps below;
 render () {
     return (
       <View style={styles.container}>
-        <Rave
-          buttonText='Pay Now'
-          raveKey='<your-api-key-here>'
-          amount={20000}
-          billingEmail='ayoshokz@gmail.com'
-          billingMobile='08101274387'
-          billingName='Oluwatobi Shokunbi'
-          ActivityIndicatorColor='green'
-          onCancel={() => this.onCancel()}
-          onSuccess={transactionRef => this.onSuccess(transactionRef)}
-          btnStyles={{
-            backgroundColor: 'green',
-            width: 100,
-            alignContent: 'center'
-          }}
-          textStyles={{ color: 'white', alignSelf: 'center' }}
-          onError={() => {
-            alert('something went wrong')
-          }}
-          txref='1234'
-        />
+<Rave
+  txref={`reference${this.getReference()}`} 
+  amount="200"
+  email="customer email" 
+  name="customer names"
+  phone="customer key"
+  publicKey="your public key"
+  SecretKey="your private key"
+  onSuccess={data=>this.onSuccess(data)}
+  onCancel={data=>this.onCancel(data)}
+  onVerifyingError={data=>this.onVerifyingError(data)}
+  onError={data=>this.onError(data)}
+  showPayButton="boolean to show payment button | payment proceesing mode "
+  buttonText="Fund your Wallet"
+/>
       </View>
     )
   }
