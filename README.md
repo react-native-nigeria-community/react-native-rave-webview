@@ -1,6 +1,6 @@
   # Rave By Flutterwave React Native WebView Component
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
   
@@ -225,6 +225,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://linksnest.com/just1and0"><img src="https://avatars3.githubusercontent.com/u/17249207?v=4" width="100px;" alt=""/><br /><sub><b>Oluwatobi Shokunbi </b></sub></a><br /><a href="https://github.com/react-native-nigeria-community/react-native-rave-webview/commits?author=just1and0" title="Code">💻</a> <a href="https://github.com/react-native-nigeria-community/react-native-rave-webview/commits?author=just1and0" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/mosoakinyemi"><img src="https://avatars2.githubusercontent.com/u/41248079?v=4" width="100px;" alt=""/><br /><sub><b>Akinyemi Mosolasi</b></sub></a><br /><a href="https://github.com/react-native-nigeria-community/react-native-rave-webview/commits?author=mosoakinyemi" title="Documentation">📖</a></td>
   </tr>
 </table>
 
