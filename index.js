@@ -5,6 +5,10 @@
  * @format
  * @flow
  */
+
+ import {Rave} from './src'
+ export default Rave;
+ /*
 import React, {useState,useEffect,forwardRef,useImperativeHandle,} from "react";
 import {Modal,Text,View,SafeAreaView,} from "react-native";
 import { WebView } from "react-native-webview";
@@ -165,3 +169,5 @@ import {verifyPayment} from './api';
     currency: "NGN",
     buttonView:{justifyContent:'flex-end',alignItems:'flex-end'}
   };
+
+  */
