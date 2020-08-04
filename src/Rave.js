@@ -1,10 +1,11 @@
 import React,{useState,useEffect,forwardRef,useImperativeHandle,} from 'react';
-import {SafeAreaView, Modal, View, ActivityIndicator, Button } from 'react-native';
+import {SafeAreaView, Modal, Text, View, ActivityIndicator, Button } from 'react-native';
 import {WebView} from 'react-native-webview';
 import {verifyPayment} from './api'
 
 function Rave(props, ref) {
     const [loading, setLoading] = useState(false);
+    const [verifying, setVerifying] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
     useEffect(() => {
         autoStartCheck();
@@ -79,7 +80,7 @@ function Rave(props, ref) {
                         customizations: {
                             title: "${props.store}",
                             description: "${props.storeDetail}",
-                            logo: "https://assets.piedpiper.com/logo.png",
+                            logo: "${props.logourl}",
                         },
                         });
                     }
@@ -113,13 +114,16 @@ function Rave(props, ref) {
                 {
                     try {
                         setModalVisible(false);
+                        setVerifying(true)
                         const ref = webResponse.txid;
                         const key =props.secretKey;
                         const verify = await verifyPayment(key,ref);
-                        console.log(JSON.stringify(verify));
-                        if (verify.data.status === "successful" && verify.currency === "NGN"){ 
+                        //console.log(JSON.stringify(verify));
+                        if (verify.data.status === "successful" && verify.data.currency === props.currency){ 
+                            setVerifying(false)
                             return props.onSuccess({data: verify.data, deposit:verify.data.amount_settled})
                         }else{
+                            setVerifying(false)
                             return props.onVerifyingError({"error":"Error in verifying user payment, However, user may bill"});
                         }
                     } catch (error) {
@@ -129,6 +133,7 @@ function Rave(props, ref) {
             break;
           default:
             setModalVisible(false);
+            setVerifying(false)
             props.onCancel({"error":"Transaction errors"});
             break;
         }
@@ -155,7 +160,15 @@ function Rave(props, ref) {
                 </SafeAreaView>
             </Modal>
             <View>
-                <Button title={props.buttonText} color="blue" onPress={()=>setModalVisible(true)} />
+                {
+                    verifying ? 
+                    <View style={{flexDirection:'row'}}>
+                        <Text> Wait!, Verifying your Transaction </Text> 
+                        <ActivityIndicator size="large" color={props.color} />
+                    </View>
+                        : <Button title={props.buttonText} color="blue" onPress={()=>setModalVisible(true)} />
+                }
+                
             </View>
         </SafeAreaView>
     )

@@ -1,4 +1,5 @@
 export const verifyPayment = async (key,ref)=>{
+    //console.log(`https://api.flutterwave.com/v3/transactions/${ref}/verify`)
     try {
         const response = await fetch(`https://api.flutterwave.com/v3/transactions/${ref}/verify`,{
             method:'GET',
@@ -9,6 +10,7 @@ export const verifyPayment = async (key,ref)=>{
             },
         }).catch(err => console.log(err));
         const data = await response.json();
+        //console.log(JSON.stringify({data,from:'api endpont'}))
         return data;
     } catch (error) {
         console.log(error);

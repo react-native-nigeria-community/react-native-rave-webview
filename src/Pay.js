@@ -7,9 +7,8 @@ export default class Pay extends Component {
     super(props);
     this.state = {
       //FLWPUBK_TEST-SANDBOXDEMOKEY-X
-      //publicKey: 'FLWPUBK-f48d30e6fe40c056caf6b069a1a92a87-X',
-      publicKey: 'FLWPUBK_TEST-74e2a431d687934498025d887bcfcd57-X',
-      secretKey: 'FLWSECK_TEST-b3a566e4fabbc7328cd6b038276505c0-X',
+      publicKey: 'FLWPUBK-f48d30e6fe40c056caf6b069a1a92a87-X',
+      secretKey: 'FLWSECK-6ebb365cd77b2c708817fd15fafbf74e-X',
       error: false,
       loading: false,
     };
@@ -51,8 +50,9 @@ export default class Pay extends Component {
                 email='abduljeleelng@gmail.com'
                 names='Abduljeleel Ola'
                 phone='08037358707'
-                store='Testing Store'
-                storeDetail='Store details'
+                //store='Testing Store'
+                //storeDetail='Store details'
+                //logourl='https://reactjs.org/logo-og.png'
                 txref={`Test-V3-${this.getReference()}`}
                 onSuccess={(data) => this.onSuccess(data)}
                 onCancel={(data) => this.onCancel(data)}
