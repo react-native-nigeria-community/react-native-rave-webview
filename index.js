@@ -7,4 +7,5 @@
  */
 
  import {Rave} from './src'
+ 
  export default Rave;

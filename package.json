@@ -27,6 +27,6 @@
   },
   "homepage": "https://github.com/react-native-nigeria/react-native-rave-webview#readme",
   "dependencies": {
-    "react-native-webview": "^9.4.0"
+    "react-native-webview": "7.4.3"
   }
 }
