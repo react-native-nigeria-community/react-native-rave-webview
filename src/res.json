@@ -1,0 +1,20 @@
+{"status":"success","message":"Transaction fetched successfully",
+    "data":
+    {"id":294442557,"tx_ref":"Test-V3-A9LyE8cxRL","flw_ref":"FLW290592266",
+        "device_fingerprint":"fb9d5ded21ab91163d770c4d2af7ddce","amount":100,
+        "currency":"NGN","charged_amount":101.4,"app_fee":1.4,"merchant_fee":0,
+        "processor_response":"Transaction Successful","auth_model":"AUTH","ip":"105.112.33.89",
+        "narration":"JTalk NG","status":"successful","payment_type":"account",
+        "created_at":"2020-08-04T19:34:24.000Z","account_id":88065,
+        "account":{
+            "account_number":"00000","bank_code":"058","account_token":"flw-t0dfe0ebee66a8ae46-k3n",
+            "account_name":"temi desola"
+        },
+        "meta":{"consumer_id":"23","consumer_mac":"92a3-912ba-1192a"},
+        "amount_settled":100,
+        "customer":{
+            "id":218581181,"name":"Abduljeleel Ola","phone_number":"08037358707","email":"abduljeleelng@gmail.com",
+            "created_at":"2020-08-03T16:12:52.000Z"
+        }
+    }
+}
