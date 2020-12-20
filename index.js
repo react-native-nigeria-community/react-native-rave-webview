@@ -6,7 +6,8 @@
  * @flow
  */
 import React, {Component} from 'react';
-import {WebView, Modal, Text, View, TouchableOpacity, ActivityIndicator} from 'react-native';   
+import {Modal, Text, View, TouchableOpacity, ActivityIndicator} from 'react-native';  
+import {WebView} from 'react-native-webview'
   
 export default class Rave extends Component {
     constructor(props){
@@ -30,7 +31,7 @@ Rave ={
                       <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
                       <title>SUBSCRIPTION</title>
               </head>
-              <body  onload="payWithRave()" style="background-color:#fff;height:100vh ">
+              <body  onload="payWithRave()" style="background-color:#fff;">
               <form>
                 <script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
                </form>
@@ -44,7 +45,7 @@ Rave ={
                       customer_email: "${this.props.billingEmail}",
                       amount: ${this.props.amount},
                       customer_phone: "${this.props.billingMobile}",
-                      currency: "NGN",
+                      currency: "${this.props.currency || 'NGN'}",
                       txref: "${this.props.txref}",
                       meta: [{
                           metaname: "${this.props.billingName}",
@@ -52,7 +53,7 @@ Rave ={
                       }],
                       onclose: function() {
                         var resp = {event:'cancelled'};
-                        postMessage(JSON.stringify(resp))
+                        window.ReactNativeWebView.postMessage(JSON.stringify(resp))
                       },
                       callback: function(response) {
                           var txref = response.tx.txRef; 
@@ -61,10 +62,10 @@ Rave ={
                               response.tx.chargeResponseCode == "0"
                           ) {
                                 var resp = {event:'successful', transactionRef:txref};
-                                postMessage(JSON.stringify(resp))
+                                window.ReactNativeWebView.postMessage(JSON.stringify(resp))
                           } else {
                             var resp = {event:'error'};
-                            postMessage(JSON.stringify(resp))
+                            window.ReactNativeWebView.postMessage(JSON.stringify(resp))
                           }
           
                           x.close(); 
@@ -116,6 +117,7 @@ render() {
                       onMessage={(e)=>{this.messageRecived(e.nativeEvent.data)}}
                       onLoadStart={()=>this.setState({isLoading:true})}
                       onLoadEnd={()=>this.setState({isLoading:false})}
+                      scalesPageToFit={false}
                     />
                     {/*Start of Loading modal*/}
                       {
@@ -139,4 +141,3 @@ Rave.defaultProps = {
   amount:10,
   ActivityIndicatorColor:'green'
 }
- 
