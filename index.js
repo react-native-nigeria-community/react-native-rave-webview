@@ -5,37 +5,34 @@
  * @format
  * @flow
  */
-import React, {Component} from 'react';
-import {Modal, Text, View, TouchableOpacity, ActivityIndicator} from 'react-native';  
-import {WebView} from "react-native-webview" 
-  
+import React, { Component } from "react";
+import { Modal, Text, View, TouchableOpacity, ActivityIndicator } from "react-native";
+import { WebView } from "react-native-webview";
+
 export default class Rave extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-           showModal:false,
-         }
+            showModal: false,
+        };
     }
 
-
-
-    startTransaction(){
-      this.setState({showModal: true})
+    startTransaction() {
+        this.setState({ showModal: true });
     } /////// This Method Can Be Accessed With Ref => rave.current.startTransaction()
 
-    endTransaction(){
-     this.setState({showModal: false}) /////// This Method Can Be Accessed With Ref => rave.current.startTransaction()
-   }
+    endTransaction() {
+        this.setState({ showModal: false }); /////// This Method Can Be Accessed With Ref => rave.current.startTransaction()
+    }
 
+    componentDidMount() {
+        if (this.props.autoStart) {
+            this.setState({ showModal: true });
+        } /////////For autoStart, Like the name suggests :D
+    }
 
-   componentDidMount(){
-     if(this.props.autoStart){
-       this.setState({ showModal: true })
-     } /////////For autoStart, Like the name suggests :D
-   }
-  
-    Rave ={
-      html:  `  
+    Rave = {
+        html: `  
         <!DOCTYPE html>
          <html lang="en">
               <head>
@@ -93,91 +90,97 @@ export default class Rave extends Component {
                </script>
              </body>
       </html> 
-      `
- }
+      `,
+    };
 
-    messageRecived=(data)=>{
-          var webResponse = JSON.parse(data);
-          switch(webResponse.event){
-                case 'cancelled':
-                    this.setState({showModal:false},()=>{
-                      this.props.onCancel && this.props.onCancel();
-                   })    
+    messageRecived = (data) => {
+        var webResponse = JSON.parse(data);
+        switch (webResponse.event) {
+            case "cancelled":
+                this.setState({ showModal: false }, () => {
+                    this.props.onCancel && this.props.onCancel();
+                });
                 break;
 
-                case 'successful':
-                    this.setState({showModal:false},()=>{
-                      this.props.onSuccess && this.props.onSuccess(webResponse.transactionRef);
-                    })    
+            case "successful":
+                this.setState({ showModal: false }, () => {
+                    this.props.onSuccess &&
+                        this.props.onSuccess(webResponse.transactionRef);
+                });
                 break;
-                
-                default:
-                    this.setState({showModal:false},()=>{
-                      this.props.onError &&  this.props.onError();
-                   })    
-                break;
-          }
-      }
 
-render() {
-    return (
-      <View>
-          <Modal 
-              visible={this.state.showModal}
-              animationType="slide"
-              transparent={false}>
-                  <WebView
-                      javaScriptEnabled={true}
-                      javaScriptEnabledAndroid={true}
-                      originWhitelist={['*']}
-                      ref={( webView ) => this.MyWebView = webView}
-                      source={this.Rave}
-                      onMessage={(e)=>{this.messageRecived(e.nativeEvent.data)}}
-                      onLoadStart={()=>this.setState({isLoading:true})}
-                      onLoadEnd={()=>this.setState({isLoading:false})}
+            default:
+                this.setState({ showModal: false }, () => {
+                    this.props.onError && this.props.onError();
+                });
+                break;
+        }
+    };
+
+    render() {
+        return (
+            <View>
+                <Modal
+                    visible={this.state.showModal}
+                    animationType="slide"
+                    transparent={false}
+                >
+                    <WebView
+                        javaScriptEnabled={true}
+                        javaScriptEnabledAndroid={true}
+                        originWhitelist={["*"]}
+                        ref={(webView) => (this.MyWebView = webView)}
+                        source={this.Rave}
+                        onMessage={(e) => {
+                            this.messageRecived(e.nativeEvent.data);
+                        }}
+                        onLoadStart={() => this.setState({ isLoading: true })}
+                        onLoadEnd={() => this.setState({ isLoading: false })}
                     />
                     {/*Start of Loading modal*/}
-                      {
-                          this.state.isLoading &&
-                          <View>
-                            <ActivityIndicator size="large" color={this.props.ActivityIndicatorColor} />
-                          </View>
-                        }
-            </Modal>
-            { this.props.showPayButton ? <TouchableOpacity style={{...styles.buttonStyles, ...this.props.btnStyles}} 
-                onPress={()=> this.setState({showModal:true})}>
-                  <Text style={{...styles.textStyles, ...this.props.textStyles}}>{this.props.buttonText ? this.props.buttonText : "Pay Now"}</Text>
-                </TouchableOpacity> : null
-              }
-      </View>
-    );
-  }
+                    {this.state.isLoading && (
+                        <View>
+                            <ActivityIndicator
+                                size="large"
+                                color={this.props.ActivityIndicatorColor}
+                            />
+                        </View>
+                    )}
+                </Modal>
+                {this.props.showPayButton ? (
+                    <TouchableOpacity
+                        style={{ ...styles.buttonStyles, ...this.props.btnStyles }}
+                        onPress={() => this.setState({ showModal: true })}
+                    >
+                        <Text style={{ ...styles.textStyles, ...this.props.textStyles }}>
+                            {this.props.buttonText ? this.props.buttonText : "Pay Now"}
+                        </Text>
+                    </TouchableOpacity>
+                ) : null}
+            </View>
+        );
+    }
 }
-
-
 
 const styles = StyleSheet.create({
-  buttonStyles: {
-    height: 40,
-    width: 150,
-    justifyContent: "center",
-    backgroundColor: "gold",
-    borderRadius: 5,
-    alignSelf: "center",
-    marginVertical: 10
-  },
-  textStyles: {
-    color: "black",
-    fontSize: 16,
-    textAlign: "center"
-  }
-})
-
-
+    buttonStyles: {
+        height: 40,
+        width: 150,
+        justifyContent: "center",
+        backgroundColor: "gold",
+        borderRadius: 5,
+        alignSelf: "center",
+        marginVertical: 10,
+    },
+    textStyles: {
+        color: "black",
+        fontSize: 16,
+        textAlign: "center",
+    },
+});
 
 Rave.defaultProps = {
-  buttonText: "Pay Now",
-  amount:10,
-  ActivityIndicatorColor:'green'
-}
- 
+    buttonText: "Pay Now",
+    amount: 10,
+    ActivityIndicatorColor: "green",
+};
