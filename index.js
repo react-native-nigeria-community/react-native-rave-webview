@@ -6,7 +6,14 @@
  * @flow
  */
 import React, { Component } from "react";
-import { Modal, Text, View, TouchableOpacity, ActivityIndicator, StyleSheet } from "react-native";
+import {
+    Modal,
+    Text,
+    View,
+    TouchableOpacity,
+    ActivityIndicator,
+    StyleSheet,
+} from "react-native";
 import { WebView } from "react-native-webview";
 
 export default class Rave extends Component {
@@ -124,6 +131,7 @@ export default class Rave extends Component {
                     visible={this.state.showModal}
                     animationType="slide"
                     transparent={false}
+                    onRequestClose={() => this.setState({ showModal: false })}
                 >
                     <WebView
                         javaScriptEnabled={true}
