@@ -84,19 +84,19 @@ export default class Rave extends Component {
           switch(webResponse.event){
                 case 'cancelled':
                     this.setState({showModal:false},()=>{
-                      this.props.onCancel();
+                      this.props.onCancel && this.props.onCancel();
                    })    
                 break;
 
                 case 'successful':
                     this.setState({showModal:false},()=>{
-                      this.props.onSuccess(webResponse.transactionRef);
+                      this.props.onSuccess && this.props.onSuccess(webResponse.transactionRef);
                     })    
                 break;
                 
                 default:
                     this.setState({showModal:false},()=>{
-                      this.props.onError();
+                      this.props.onError &&  this.props.onError();
                    })    
                 break;
           }
@@ -127,13 +127,35 @@ render() {
                           </View>
                         }
             </Modal>
-             <TouchableOpacity style={this.props.btnStyles} onPress={()=> this.setState({showModal:true})}>
-                <Text style={this.props.textStyles}  >{this.props.buttonText}</Text>
-            </TouchableOpacity>
+            { this.props.showPayButton ? <TouchableOpacity style={{...styles.buttonStyles, ...this.props.btnStyles}} 
+                onPress={()=> this.setState({showModal:true})}>
+                  <Text style={{...styles.textStyles, ...this.props.textStyles}}>{this.props.buttonText ? this.props.buttonText : "Pay Now"}</Text>
+                </TouchableOpacity> : null
+              }
       </View>
     );
   }
 }
+
+
+
+const styles = StyleSheet.create({
+  buttonStyles: {
+    height: 40,
+    width: 150,
+    justifyContent: "center",
+    backgroundColor: "gold",
+    borderRadius: 5,
+    alignSelf: "center",
+    marginVertical: 10
+  },
+  textStyles: {
+    color: "black",
+    fontSize: 16,
+    textAlign: "center"
+  }
+})
+
 
 
 Rave.defaultProps = {
