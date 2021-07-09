@@ -16,6 +16,23 @@ export default class Rave extends Component {
            showModal:false,
          }
     }
+
+
+
+    startTransaction(){
+      this.setState({showModal: true})
+    } /////// This Method Can Be Accessed With Ref => rave.current.startTransaction()
+
+    endTransaction(){
+     this.setState({showModal: false}) /////// This Method Can Be Accessed With Ref => rave.current.startTransaction()
+   }
+
+
+   componentDidMount(){
+     if(this.props.autoStart){
+       this.setState({ showModal: true })
+     } /////////For autoStart, Like the name suggests :D
+   }
   
     Rave ={
       html:  `  
