@@ -6,7 +6,8 @@
  * @flow
  */
 import React, {Component} from 'react';
-import {WebView, Modal, Text, View, TouchableOpacity, ActivityIndicator} from 'react-native';   
+import {Modal, Text, View, TouchableOpacity, ActivityIndicator} from 'react-native';  
+import {WebView} from "react-native-webview" 
   
 export default class Rave extends Component {
     constructor(props){
@@ -16,10 +17,10 @@ export default class Rave extends Component {
          }
     }
   
-Rave ={
+    Rave ={
       html:  `  
-      <!DOCTYPE html>
-      <html lang="en">
+        <!DOCTYPE html>
+         <html lang="en">
               <head>
                       <meta charset="UTF-8">
                       <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -27,6 +28,7 @@ Rave ={
                       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
                       <!-- Fonts -->
                       <link rel="dns-prefetch" href="//fonts.gstatic.com">
+                       <meta name="viewport" content="width=device-width, initial-scale=1.0">
                       <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
                       <title>SUBSCRIPTION</title>
               </head>
@@ -52,30 +54,30 @@ Rave ={
                       }],
                       onclose: function() {
                         var resp = {event:'cancelled'};
-                        postMessage(JSON.stringify(resp))
+                        window.ReactNativeWebView.postMessage(JSON.stringify(resp))
                       },
                       callback: function(response) {
                           var txref = response.tx.txRef; 
+                          window.ReactNativeWebView.postMessage(JSON.stringify({event: cancelled}))
                            if (
                               response.tx.chargeResponseCode == "00" ||
                               response.tx.chargeResponseCode == "0"
                           ) {
-                                var resp = {event:'successful', transactionRef:txref};
-                                postMessage(JSON.stringify(resp))
+                              var resp = {event:'successful', transactionRef:txref};
+                              window.ReactNativeWebView.postMessage(JSON.stringify(resp))
                           } else {
                             var resp = {event:'error'};
-                            postMessage(JSON.stringify(resp))
+                            window.ReactNativeWebView.postMessage(JSON.stringify(resp))
                           }
-          
                           x.close(); 
                       }
                   });
               }
-          </script>
-              </body>
+               </script>
+             </body>
       </html> 
       `
-    }
+ }
 
     messageRecived=(data)=>{
           var webResponse = JSON.parse(data);
