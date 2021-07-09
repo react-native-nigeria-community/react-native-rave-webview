@@ -63,7 +63,7 @@ export default class Rave extends Component {
                       customer_email: "${this.props.billingEmail}",
                       amount: ${this.props.amount},
                       customer_phone: "${this.props.billingMobile}",
-                      currency: "NGN",
+                      currency: ${this.props.currency ? this.props.currency : "NGN"},
                       txref: "${this.props.txref}",
                       meta: [{
                           metaname: "${this.props.billingName}",
