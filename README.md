@@ -178,7 +178,9 @@ render () {
 
 | Name | use/description | extra |
 | :--- | :---: | ---: |
+| `showPayButton` | Defines Whether to show PayButton | default: `False` |
 | `buttonText` | Defines text on the button | default: `Pay Now` |
+| `Currency` | Defines text on the button | default: `NGN` |
 | `textStyles` | Defines styles for text in button | `nill` |
 | `btnStyles` | Defines style for button | `nill` |
 | `raveKey` | Public or Private paystack key(visit https://rave.flutterwave.com to get yours) |`nill` |
