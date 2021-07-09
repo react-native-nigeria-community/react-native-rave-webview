@@ -134,14 +134,29 @@ You can pull in react-native-rave-webview into app with the steps below;
   onError () {
     // an error occoured
   }
+
+  startTransaction() ///// Dynamically Start The Transaction
+  endTransaction() ///// Dynamically End The Transaction
+
   ```
 #### 3. Use component (ensure to set currency for the desired payment method to display)
 
 ``` javascript
+
+import {useRef} from "react"
+const webViewRef  = useRef();
+
+//////Dynamically Start And End Transaction///
+this.webViewRef.current.startTransaction()
+// Or
+this.webViewRef.current.endTransaction()
+
+
 render () {
     return (
       <View style={styles.container}>
         <Rave
+          ref={webViewRef} //// Optional For Starting And Ending Transaction
           buttonText='Pay Now'
           raveKey='<your-api-key-here>'
           amount={20000}
@@ -178,6 +193,8 @@ render () {
 
 | Name | use/description | extra |
 | :--- | :---: | ---: |
+| `startTransaction()` | Opens The Modal Dynamically | default: `False` |
+| `endTransaction()` | Opens The Modal Dynamically | default: `False` |
 | `showPayButton` | Defines Whether to show PayButton | default: `False` |
 | `buttonText` | Defines text on the button | default: `Pay Now` |
 | `Currency` | Defines text on the button | default: `NGN` |
