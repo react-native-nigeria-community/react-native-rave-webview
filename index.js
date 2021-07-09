@@ -6,7 +6,7 @@
  * @flow
  */
 import React, { Component } from "react";
-import { Modal, Text, View, TouchableOpacity, ActivityIndicator } from "react-native";
+import { Modal, Text, View, TouchableOpacity, ActivityIndicator, StyleSheet } from "react-native";
 import { WebView } from "react-native-webview";
 
 export default class Rave extends Component {
