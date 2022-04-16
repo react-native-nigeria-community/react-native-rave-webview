@@ -1,4 +1,8 @@
-  # Rave By Flutterwave React Native WebView Component
+ [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+# DEPRECATED
+This will no longer be maintained or updated, please consider using [*Ortho-community-checkout*](https://github.com/OrthoHQ/ortho-community-checkout) instead.  
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
