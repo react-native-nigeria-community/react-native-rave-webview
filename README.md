@@ -1,8 +1,8 @@
- [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 # DEPRECATED
-This will no longer be maintained or updated, please consider using [*Ortho-community-checkout*](https://github.com/OrthoHQ/ortho-community-checkout) instead.  
-
+This will no longer be maintained or updated, please consider using [*react-native-ortho*](https://github.com/OrthoHQ/react-native-ortho) instead.  
+ 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
